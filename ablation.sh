@@ -14,7 +14,10 @@ mkdir -p  output/AQUAINT
 mkdir -p  output/MSNBC
 mkdir -p  output/ACE
 
-for configFile in `find $configsFolder -type f -printf "%f\n"`
+#for configFile in `find $configsFolder -type f -printf "%f\n"`
+
+# NOTE: difference from "FULL" and "COREF" is if it uses INFERENCE
+for configFile in "FULL.xml"
 do
 
 	configpath="$configsFolder/$configFile"
@@ -26,9 +29,9 @@ do
     
     echo $command
     
-	$command $datafolder/WikipediaSample/ProblemsTest/  $datafolder/WikipediaSample/RawTextsTest/ output/Wikipedia/   $configpath > $outDir/WikiTest& #Wikipedia
-	$command $datafolder/AQUAINT/Problems/ $datafolder/AQUAINT/RawTexts/  output/AQUAINT/ $configpath > $outDir/AQUAINT & #AQUAINT
-	$command $datafolder/MSNBC/Problems/ $datafolder/MSNBC/RawTextsSimpleChars/ output/MSNBC/   $configpath > $outDir/MSNBC &  #MSNBC
+#	$command $datafolder/WikipediaSample/ProblemsTest/  $datafolder/WikipediaSample/RawTextsTest/ output/Wikipedia/   $configpath > $outDir/WikiTest& #Wikipedia
+#	$command $datafolder/AQUAINT/Problems/ $datafolder/AQUAINT/RawTexts/  output/AQUAINT/ $configpath > $outDir/AQUAINT & #AQUAINT
+#	$command $datafolder/MSNBC/Problems/ $datafolder/MSNBC/RawTextsSimpleChars/ output/MSNBC/   $configpath > $outDir/MSNBC &  #MSNBC
 	$command $datafolder/ACE2004_Coref_Turking/Dev/ProblemsNoTranscripts/ $datafolder/ACE2004_Coref_Turking/Dev/RawTextsNoTranscripts output/ACE/  $configpath > $outDir/Ace & #ACE
 	echo "Waiting for $configFile to finish"
 	wait

@@ -593,7 +593,16 @@ public class Mention extends TextSpan implements Serializable,Closeable {
                 }
             }
         }
-        
+        System.out.println("[Debug]before using lexical search, |candidates|="+candidates.size());
+        for (List<WikiCandidate> layer:candidates) {
+               System.out.print("[Debug]layer = ");
+               for (WikiCandidate cand:layer) {
+                       System.out.print(cand.titleName+",");
+               }
+               System.out.println();
+        }
+        System.out.println("[Debug]use lexical search to get redirect="+redirect);
+     
         if (redirect != null && !TitleNameIndexer.isDisambiguationPage(redirect)) {
             finalCandidate = topCandidate = getCandidate(redirect);
             redirectedOnly = true;

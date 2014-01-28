@@ -283,6 +283,13 @@ public class LinkingProblem implements Serializable,Closeable {
     public void deepRelationalInference(){
 
         resolveCoherenceRelations();
+        for (CoherenceRelation rel:this.relations) {
+            System.out.println("==================");
+               System.out.println("arg1 = "+rel.arg1);
+               System.out.println("arg2 = "+rel.arg2);
+               System.out.println("w = "+rel.weight);
+               System.out.println("==================");
+        }
 
         if (GlobalParameters.params.USE_RELATIONAL_INFERENCE || GlobalParameters.params.USE_COREF) {
             try {
