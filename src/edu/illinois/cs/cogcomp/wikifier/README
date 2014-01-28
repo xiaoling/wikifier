@@ -1,0 +1,4 @@
+This is a version of a Wikifier which is supposed to be super quick. It'll generate just 5 top disambiguation candidates per entity. It'll then link only the ones which contain the disambiguation.
+
+This Wikifier is geared to linking *a lot of common-sense expressions*, *not just named entities* as it is 
+trained with the annotation standards for Wikipedia
