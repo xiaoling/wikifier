@@ -42,7 +42,7 @@ import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.LRUCache;
  * It still returns a TextAnnotation with NER, POS and Chunker 
  * annotation, but it doesn't really call the curator. 
  */
-class FakeCurator {
+public class FakeCurator {
 
     private static String nerModelFile;
 
@@ -106,7 +106,44 @@ class FakeCurator {
 	public TextAnnotation annotate(String text) throws Exception{
 	    return annotationCache.get(text);
 	}
-		
+	public void addViews(TextAnnotation ta) throws Exception {
+		List<String> nerWords  = new ArrayList<String>();
+		List<String> nerTags = new ArrayList<String>();
+		performNER(ta.getText(), true, level1NerTagger.get(), level2NerTagger.get(), nerWords, nerTags);
+		List<String> chunkerWords = new ArrayList<String>();
+		List<String> chunkerTags = new ArrayList<String>();
+		List<String> posTags = new ArrayList<String>();
+		performChunkerAndPos(ta.getText(), true, chunker, chunkerWords, chunkerTags, posTags);
+		View nerView = new SpanLabelView(ViewNames.NER, "IllinoisNER.2.1", ta, 0, true);
+		Labeling nerLabels = getLabeling(nerWords, nerTags,  ta.getText(), "IllinoisNER.2.1");
+		for(Iterator<Span> label= nerLabels.getLabelsIterator(); label.hasNext() ; ) {
+			Span span = label.next();
+			Constituent c = makeConstituentFixTokenBoundaries(span.label, ViewNames.NER, ta, span.start, span.ending);
+			if(c!=null)
+				nerView.addConstituent(c);
+		}
+		ta.addView(ViewNames.NER, nerView);
+
+		View chunkerView = new SpanLabelView(ViewNames.SHALLOW_PARSE, "IllinoisChunker", ta, 0);
+		Labeling chunkerLabels = getLabeling(chunkerWords, chunkerTags, ta.getText(), "IllinoisChunker");
+		for(Iterator<Span> label= chunkerLabels.getLabelsIterator(); label.hasNext() ; ) {
+			Span span = label.next();
+			Constituent c = makeConstituentFixTokenBoundaries(span.label, ViewNames.SHALLOW_PARSE, ta, span.start, span.ending); 
+			if(c!=null)
+				chunkerView.addConstituent(c);
+		}
+		ta.addView(ViewNames.SHALLOW_PARSE, chunkerView);
+
+		View posView = new View(ViewNames.POS, "IllinoisPOS", ta, 0);
+		Labeling posLabels = getLabeling(chunkerWords, posTags, ta.getText(), "IllinoisPOS");
+		for(Span span : posLabels.labels ) {
+		    Constituent c = makeConstituentFixTokenBoundaries(span.label, ViewNames.POS, ta, span.start, span.ending);
+			if(c!=null)
+				posView.addConstituent(c);
+		}
+		ta.addView(ViewNames.POS, posView);
+
+	}
 	private TextAnnotation addViews(String text) throws Exception {
 		TextAnnotation ta = createAnnotation(text);
 		ExecutorService exe = null;
@@ -199,7 +236,7 @@ class FakeCurator {
 	/*
 	 * Returns the results through parameters!!!! Make sure to refresh the result params!
 	 */
-	private synchronized void performChunkerAndPos(String input,
+	public synchronized void performChunkerAndPos(String input,
 			boolean newline2newsent, Chunker chunker, 
 			List<String> words, 
 			List<String> chunkerPrediction,

@@ -17,13 +17,20 @@ import LBJ2.parse.LinkedVector;
 
 import com.google.common.collect.Lists;
 
+import edu.illinois.cs.cogcomp.LbjNer.LbjFeatures.NETaggerLevel1;
+import edu.illinois.cs.cogcomp.LbjNer.LbjFeatures.NETaggerLevel2;
+import edu.illinois.cs.cogcomp.LbjNer.LbjTagger.Parameters;
 import edu.illinois.cs.cogcomp.LbjNer.LbjTagger.ParametersForLbjCode;
 import edu.illinois.cs.cogcomp.LbjNer.ParsingProcessingData.PlainTextReader;
 import edu.illinois.cs.cogcomp.edison.sentences.Constituent;
+import edu.illinois.cs.cogcomp.edison.sentences.SpanLabelView;
 import edu.illinois.cs.cogcomp.edison.sentences.TextAnnotation;
 import edu.illinois.cs.cogcomp.edison.sentences.View;
 import edu.illinois.cs.cogcomp.edison.sentences.ViewNames;
+import edu.illinois.cs.cogcomp.edison.sentences.TokenizerUtilities.SentenceViewGenerators;
 import edu.illinois.cs.cogcomp.lbj.chunk.Chunker;
+import edu.illinois.cs.cogcomp.thrift.base.Labeling;
+import edu.illinois.cs.cogcomp.thrift.base.Span;
 import edu.illinois.cs.cogcomp.wikifier.annotation.CachingCurator;
 import edu.illinois.cs.cogcomp.wikifier.common.GlobalParameters;
 import edu.illinois.cs.cogcomp.wikifier.evaluation.Evaluator;
@@ -53,7 +60,6 @@ public class ReferenceAssistant {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("Params:" + Arrays.toString(args));
-		testAddDoc();
 		System.out.println("Usage: either");
 		System.out
 				.println("\t$java ReferenceAssistant -trainSvmModelsOnly <pathToConfigFile>");
@@ -250,8 +256,9 @@ public class ReferenceAssistant {
 					if (text.replace(" ", "").replace("\n", "")
 							.replace("\r", "").length() > 0) {
 						List<ReferenceInstance> goldProblem = problems.get(i);
-						TextAnnotation ta = GlobalParameters.curator
-								.getTextAnnotation(text);
+						// GlobalParameters.curator
+						TextAnnotation ta = getTextAnnotation(problems
+								.get(i).get(0).rawTextFilename);
 						LinkingProblem problem = new LinkingProblem(problems
 								.get(i).get(0).rawTextFilename, ta, goldProblem);
 						long lastTime = System.currentTimeMillis();
@@ -350,95 +357,66 @@ public class ReferenceAssistant {
 		}
 	}
 
-	private static void testAddDoc() throws Exception {
-		String rawFilesPath = "data/WikificationACL2011Data/ACE2004_Coref_Turking/Dev/RawTextsNoTranscripts/";
-		String cachePath = "data/TextAnnotationCache/";
-		String nerConfigFile = "configs/NER.config";
-		Set<String> views = new HashSet<String>();
-		views.add(ViewNames.NER);
-		views.add(ViewNames.SHALLOW_PARSE);
-		CachingCurator curator = new CachingCurator(views, cachePath,
-				nerConfigFile);
-
-		String filename = "PRI20001128.2000.0055";
-		String text = InFile.readFileText(rawFilesPath + "/" + filename);
+	private static TextAnnotation getTextAnnotation(String filename) throws Exception {
+//		 = "PRI20001128.2000.0055";
+		// String text = InFile.readFileText(rawFilesPath + "/" + filename);
 		Annotation ann = DocAnnotationUtils.instance().readDocument(filename);
 		List<String> tokenizedSentences = new ArrayList<String>();
-		for (CoreMap sent : ann.get(SentencesAnnotation.class)) {
-			List<CoreLabel> tokens = sent
-					.get(CoreAnnotations.TokensAnnotation.class);
-			StringBuilder sb = new StringBuilder();
-			for (CoreLabel token : tokens) {
-				sb.append(token.get(CoreAnnotations.TextAnnotation.class) + " ");
-			}
-			tokenizedSentences.add(sb.toString().trim());
-		}
+		 for (CoreMap sent : ann.get(SentencesAnnotation.class)) {
+		 List<CoreLabel> tokens = sent
+		 .get(CoreAnnotations.TokensAnnotation.class);
+		 StringBuilder sb = new StringBuilder();
+		 for (CoreLabel token : tokens) {
+		 sb.append(token.get(CoreAnnotations.TextAnnotation.class) + " ");
+		 }
+		 tokenizedSentences.add(sb.toString().trim());
+		 }
+		// TextAnnotation ta2 = new TextAnnotation("fakeCorpus", "fakeId", text,
+		// SentenceViewGenerators.WhiteSpaceSentenceViewGenerator);
 		// TextAnnotation ta = curator.getTextAnnotation(text);
 		TextAnnotation ta = new TextAnnotation("ace", "fakeid",
 				tokenizedSentences);
-		ParametersForLbjCode.currentParameters.forceNewSentenceOnLineBreaks = true;
-		System.out.println(ta.getText());
-		List<LinkedVector> NEWordSentences = PlainTextReader
-				.parseText(ta.getText());
-		
-		for (int i = 0; i < NEWordSentences.size(); i++) {
-			System.out.println(NEWordSentences.get(i).size() + ","
-					+ tokenizedSentences.get(i).split(" ").length);
-		}
-		// curator.fakeCurator.addChunkView(ta, false);
-		Iterator<Constituent> it = ta.getView(ViewNames.SENTENCE).iterator();
-		while (it.hasNext()) {
-			it.next();
-			it.remove();
-		}
-
-		for (CoreMap sent : ann.get(SentencesAnnotation.class)) {
-			List<CoreLabel> tokens = sent
-					.get(CoreAnnotations.TokensAnnotation.class);
-			int start = tokens.get(0).get(
-					CoreAnnotations.CharacterOffsetBeginAnnotation.class);
-			int end = tokens.get(tokens.size() - 1).get(
-					CoreAnnotations.CharacterOffsetEndAnnotation.class);
-			System.out.println("sent(" + start + "," + end + ") = "
-					+ text.substring(start, end));
-			Constituent constituent = new Constituent(ViewNames.SENTENCE,
-					ViewNames.SENTENCE, ta, start, end);
-			System.out.println("const=" + constituent.toSExpression() + ", "
-					+ constituent.getStartCharOffset());
-			ta.getView(ViewNames.SENTENCE).addConstituent(constituent);
-		}
-		for (String viewName : ta.getAvailableViews()) {
-			System.out.println("=======" + viewName + "==========");
-			try {
-				View view = ta.getView(viewName);
-				System.out.println("v=" + (view.getTextAnnotation() == ta)
-						+ " , " + view.getViewGenerator());
-				StringBuilder sb = new StringBuilder();
-				for (Constituent c : view.getConstituents()) {
-					// sb.append(c.getSurfaceString()+"\n");
-					System.out.println("c=" + (c.getTextAnnotation() == ta)
-							+ " , " + c.getLabel());
-					System.out.println(c.getStartCharOffset()
-							+ " "
-							+ c.getEndCharOffset()
-							+ " "
-							+ c.getSurfaceString()
-							+ " "
-							+ text.substring(c.getStartCharOffset(),
-									c.getEndCharOffset()));
-					break;
-				}
-				// view.addConstituent(new
-				// Constituent(ViewNames.SENTENCE,
-				// ViewNames.SENTENCE, ta, 0, 1));
-				// FileUtils.write(new
-				// File("tmp/"+infiles.get(i)), sb.toString());
-				// continue;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		System.exit(0);
+		System.out.println(ta.getAvailableViews());
+		GlobalParameters.curator.fakeCurator.addViews(ta);
+		// Iterator<Constituent> it =
+		// ta2.getView(ViewNames.SENTENCE).iterator();
+		// while (it.hasNext()) {
+		// it.next();
+		// it.remove();
+		// }
+//		for (String viewName : ta.getAvailableViews()) {
+//			System.out.println("=======" + viewName + "==========");
+//			try {
+//				View view = ta.getView(viewName);
+//				System.out.println("v=" + (view.getTextAnnotation() == ta)
+//						+ " , " + view.getViewGenerator());
+//				StringBuilder sb = new StringBuilder();
+//				for (Constituent c : view.getConstituents()) {
+//					// sb.append(c.getSurfaceString()+"\n");
+//					System.out.println("c=" + (c.getTextAnnotation() == ta)
+//							+ " , " + c.getLabel());
+//					System.out.println(c.getStartCharOffset()
+//							+ " "
+//							+ c.getEndCharOffset()
+//							+ " "
+//							+ c.getSurfaceString()
+//							+ " "
+//							+ text.substring(c.getStartCharOffset(),
+//									c.getEndCharOffset()));
+//					break;
+//				}
+//				// view.addConstituent(new
+//				// Constituent(ViewNames.SENTENCE,
+//				// ViewNames.SENTENCE, ta, 0, 1));
+//				// FileUtils.write(new
+//				// File("tmp/"+infiles.get(i)), sb.toString());
+//				// continue;
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		System.exit(0);
+		return ta;
 	}
 
 	public static String getScoresString(WikiCandidate c) throws Exception {

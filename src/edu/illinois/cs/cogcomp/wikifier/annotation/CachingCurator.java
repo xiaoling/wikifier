@@ -144,10 +144,15 @@ public class CachingCurator {
 		}	
 		if(overrideContent || !isTheSame) {
 			try {
-				if(fakeCurator!=null)
+				if(fakeCurator!=null) {
+					System.out.println("fake curator annotating");
 					ta = fakeCurator.annotate(text);
-				else
+				}
+				else {
+					System.out.println("caching curator annotating");
 					ta = annotate(text);
+				}
+				System.exit(0);
 				write(savePath, ta);
 				return ta;
 			}catch (Exception e) {
