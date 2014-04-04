@@ -10,7 +10,6 @@ import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.BasicTitleD
 import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.LexicalTitleDataInfoProto;
 import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.SemanticTitleDataInfoProto;
 import edu.illinois.cs.cogcomp.wikifier.wiki.access.WikiAccess;
-import edu.illinois.cs.cogcomp.wikifier.wiki.access.WikiAccess.WikiMatchData;
 
 
 public class SimilarityMetrics {

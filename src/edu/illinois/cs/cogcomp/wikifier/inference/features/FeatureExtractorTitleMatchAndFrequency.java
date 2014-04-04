@@ -3,9 +3,9 @@ package edu.illinois.cs.cogcomp.wikifier.inference.features;
 import java.util.List;
 
 import edu.illinois.cs.cogcomp.wikifier.common.GlobalParameters;
-import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 import edu.illinois.cs.cogcomp.wikifier.models.LinkingProblem;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
+import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 
 
 

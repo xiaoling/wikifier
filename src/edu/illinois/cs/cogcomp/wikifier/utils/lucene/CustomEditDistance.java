@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.search.spell.JaroWinklerDistance;
 import org.apache.lucene.search.spell.LevensteinDistance;
 
-
 import com.aliasi.spell.TokenizedDistance;
 import com.aliasi.tokenizer.RegExTokenizerFactory;
 import com.google.common.collect.Sets;

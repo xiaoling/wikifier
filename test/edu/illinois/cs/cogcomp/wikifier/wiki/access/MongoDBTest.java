@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.wiki.access;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.net.UnknownHostException;
 

@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.models.extractors;
 
-import static edu.illinois.cs.cogcomp.wikifier.utils.WordFeatures.*;
+import static edu.illinois.cs.cogcomp.wikifier.utils.WordFeatures.isCapitalized;
 
 import java.util.ArrayList;
 import java.util.Arrays;

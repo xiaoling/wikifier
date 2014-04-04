@@ -3,7 +3,7 @@
 # The script to perform ablation runs on the 4 wikification dataset
 # 
 #
-cpath="dist/wikifier-3.0-jar-with-dependencies.jar"
+cpath="target/wikifier-3.0-jar-with-dependencies.jar"
 
 datafolder="data/WikificationACL2011Data"
 
@@ -29,10 +29,10 @@ do
     
     echo $command
     
-#	$command $datafolder/WikipediaSample/ProblemsTest/  $datafolder/WikipediaSample/RawTextsTest/ output/Wikipedia/   $configpath > $outDir/WikiTest& #Wikipedia
-#	$command $datafolder/AQUAINT/Problems/ $datafolder/AQUAINT/RawTexts/  output/AQUAINT/ $configpath > $outDir/AQUAINT & #AQUAINT
-#	$command $datafolder/MSNBC/Problems/ $datafolder/MSNBC/RawTextsSimpleChars/ output/MSNBC/   $configpath > $outDir/MSNBC &  #MSNBC
-	$command $datafolder/ACE2004_Coref_Turking/Dev/ProblemsNoTranscripts/ $datafolder/ACE2004_Coref_Turking/Dev/RawTextsNoTranscripts output/ACE/  $configpath > $outDir/Ace & #ACE
+#	$command $datafolder/WikipediaSample/ProblemsTest/  $datafolder/WikipediaSample/RawTextsTest/ output/Wikipedia/   $configpath > $outDir/WikiTest #Wikipedia
+	#$command $datafolder/AQUAINT/Problems/ $datafolder/AQUAINT/RawTexts/  output/AQUAINT/ $configpath > $outDir/AQUAINT  #AQUAINT
+#	$command $datafolder/MSNBC/Problems/ $datafolder/MSNBC/RawTextsSimpleChars/ output/MSNBC/   $configpath > $outDir/MSNBC   #MSNBC
+	 $command $datafolder/ACE2004_Coref_Turking/Dev/ProblemsNoTranscripts/ $datafolder/ACE2004_Coref_Turking/Dev/RawTextsNoTranscripts output/ACE/  $configpath > $outDir/Ace  #ACE
 	echo "Waiting for $configFile to finish"
 	wait
 	echo "Finished $configFile"

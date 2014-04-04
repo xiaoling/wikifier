@@ -1,7 +1,9 @@
 package edu.illinois.cs.cogcomp.wikifier.models.extractors;
 
+import java.io.File;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 

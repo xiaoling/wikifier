@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import LBJ2.classify.Classifier;
+import LBJ2.infer.GurobiHook;
 import LBJ2.learn.LinearThresholdUnit;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.Mention;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.docs.Doc;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.examples.CExample;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.solutions.ChainSolution;
-import LBJ2.infer.GurobiHook;
 
 /** 
  * Translates classification decisions to a collection of

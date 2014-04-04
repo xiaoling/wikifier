@@ -77,6 +77,7 @@ public class WikifierParameters {
     public boolean useAllSurfaceFormsInDisambiguationContext;
     public boolean useOnlyLinkedSurfaceFormsForDisambiguationContext;
     public boolean useCoherenceFeatures;
+    public boolean useProfilerFeatures;
     public boolean useGoldSolutionsForCoherence;
     
     public boolean generateFeaturesConjunctions;

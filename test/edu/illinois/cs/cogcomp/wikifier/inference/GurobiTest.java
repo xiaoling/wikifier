@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.inference;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import gurobi.GRB;
 import gurobi.GRBEnv;
 import gurobi.GRBLinExpr;

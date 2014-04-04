@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,10 +9,9 @@ import java.util.List;
 import org.junit.Test;
 
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
-import edu.illinois.cs.cogcomp.wikifier.utils.Comparators;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.Window;
-import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.WindowList;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.Window.Neighbor;
+import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.WindowList;
 
 
 

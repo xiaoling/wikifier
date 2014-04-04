@@ -1,6 +1,8 @@
 package edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations;
 
-import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils.*;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils.idQuery;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils.parse;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils.readRelationalDoc;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ import edu.illinois.cs.cogcomp.wikifier.common.GlobalParameters;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.Triple;
 import edu.illinois.cs.cogcomp.wikifier.utils.lucene.Lucene;
-import edu.illinois.cs.cogcomp.wikifier.wiki.access.MongoDBWikiAccess;
 import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.TitleNameIndexer;
 
 public class WikiRelationSearcher {

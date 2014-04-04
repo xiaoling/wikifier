@@ -6,12 +6,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
+import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 import edu.illinois.cs.cogcomp.wikifier.utils.Comparators;
 
 public class CorefElection {

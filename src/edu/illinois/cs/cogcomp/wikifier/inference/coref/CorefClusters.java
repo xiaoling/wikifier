@@ -1,12 +1,12 @@
 package edu.illinois.cs.cogcomp.wikifier.inference.coref;
 
-import edu.illinois.cs.cogcomp.wikifier.models.Mention;
-import gnu.trove.set.hash.TCustomHashSet;
-import gnu.trove.strategy.IdentityHashingStrategy;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+
+import edu.illinois.cs.cogcomp.wikifier.models.Mention;
+import gnu.trove.set.hash.TCustomHashSet;
+import gnu.trove.strategy.IdentityHashingStrategy;
 
 
 /**

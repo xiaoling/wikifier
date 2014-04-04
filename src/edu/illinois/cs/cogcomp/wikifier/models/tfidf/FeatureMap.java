@@ -1,21 +1,20 @@
 package edu.illinois.cs.cogcomp.wikifier.models.tfidf;
 
-import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.OccurrenceCounter;
-import edu.illinois.cs.cogcomp.wikifier.utils.io.InFile;
-import edu.illinois.cs.cogcomp.wikifier.utils.io.OutFile;
-import edu.illinois.cs.cogcomp.wikifier.utils.io.StopWords;
-import gnu.trove.map.TIntObjectMap;
-import gnu.trove.map.hash.TIntObjectHashMap;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
+import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.OccurrenceCounter;
+import edu.illinois.cs.cogcomp.wikifier.utils.io.InFile;
+import edu.illinois.cs.cogcomp.wikifier.utils.io.OutFile;
+import edu.illinois.cs.cogcomp.wikifier.utils.io.StopWords;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 
 

@@ -7,20 +7,42 @@
 
 	<repositories>
 		<repository>
+			<id>sonatype</id>
+			<name>Sonatype Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+			<releases>					                             <enabled>false</enabled>
+                                <updatePolicy>always</updatePolicy>
+                                <checksumPolicy>warn</checksumPolicy>
+                       	</releases>
+                       	<layout>default</layout>
+		</repository>
+		<repository>
 			<id>CogcompSoftware</id>
 			<name>CogcompSoftware</name>
 			<url>http://cogcomp.cs.illinois.edu/m2repo/</url>
+			 <releases>
+                              <enabled>false</enabled>
+                              <updatePolicy>always</updatePolicy>
+                              <checksumPolicy>warn</checksumPolicy>                           </releases>
 		</repository>
 		<repository>
 			<id>XypronRelease</id>
 			<name>Xypron Release</name>
 			<url>http://rsync.xypron.de/repository</url>
 			<layout>default</layout>
+			 <releases>
+                             <enabled>false</enabled>
+                             <updatePolicy>always</updatePolicy>
+                             <checksumPolicy>warn</checksumPolicy>                           </releases>
 		</repository>
 		<repository>
 			<id>local-wikifier-repo</id>
 			<name>Wikifier Local Repo</name>
 			<url>file:///${basedir}/lib</url>
+			 <releases>
+                            <enabled>false</enabled>
+                           <updatePolicy>always</updatePolicy>
+                           <checksumPolicy>warn</checksumPolicy>                           </releases>
 		</repository>
 		<repository>
 			<releases>
@@ -33,9 +55,33 @@
 			<url>http://maven.clapper.org/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>iesl</id>
+			<name>iesl at umass</name>
+			<url>http://dev-iesl.cs.umass.edu/nexus/content/groups/public</url>
+			<releases>
+                           <enabled>true</enabled>
+                           <updatePolicy>always</updatePolicy>
+                          <checksumPolicy>warn</checksumPolicy>
+                        </releases>                   	
+		</repository>
+		<repository>
+                        <id>central</id>
+                        <name>Maven Repository Switchboard</name>
+                        <layout>default</layout>
+                        <url>http://repo1.maven.org/maven2</url>
+                        <snapshots>
+                                <enabled>false</enabled>
+                        </snapshots>
+                </repository>
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>holism</groupId>
+			<artifactId>holism_2.10</artifactId>
+			<version>0</version>
+		</dependency>
 		<dependency>
 			<groupId>edu.illinois.cs.cogcomp</groupId>
 			<artifactId>edison</artifactId>

@@ -42,7 +42,10 @@ public enum ParameterPresets {
         public void set() {
         }
     },
-
+    PROFILER {
+        public void set() {
+        }
+    },
     COMPARE_OLD_WIKIFIER {
         public void set() {
             GlobalParameters.params.UNINDEXED_AS_NULL = false;

@@ -7,13 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.illinois.cs.cogcomp.wikifier.utils.Comparators;
-import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils;
-
 import LBJ2.classify.Score;
 import LBJ2.classify.ScoreSet;
 import LBJ2.learn.Normalizer;
 import LBJ2.learn.Softmax;
+import edu.illinois.cs.cogcomp.wikifier.utils.Comparators;
+import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationIndexUtils;
 
 public class Triple {
 

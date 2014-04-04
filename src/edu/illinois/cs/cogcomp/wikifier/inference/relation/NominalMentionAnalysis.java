@@ -1,6 +1,7 @@
 package edu.illinois.cs.cogcomp.wikifier.inference.relation;
 
-import static edu.illinois.cs.cogcomp.edison.sentences.Queries.*;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.hasNoOverlap;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.hasOverlap;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,18 +1,16 @@
 package edu.illinois.cs.cogcomp.wikifier.utils;
 
-import static org.junit.Assert.*;
-import edu.illinois.cs.cogcomp.wikifier.utils.Timer;
-import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.TitleNameIndexer;
-import gnu.trove.map.hash.TIntObjectHashMap;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
 import org.apache.lucene.document.Document;
-import org.junit.Test;
-
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+
+import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.TitleNameIndexer;
+import gnu.trove.map.hash.TIntObjectHashMap;
 /**12257 collisions out of 10215407 total urls mumur_32
  * 12096 collisions out of 10215407 total urls crc_32
  * 12274 collisions out of 10215407 total urls md5 in 125187 ms

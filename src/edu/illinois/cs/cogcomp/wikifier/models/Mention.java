@@ -1,6 +1,7 @@
 package edu.illinois.cs.cogcomp.wikifier.models;
 
-import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.countMatches;
+import static org.apache.commons.lang3.StringUtils.strip;
 
 import java.io.Closeable;
 import java.io.Serializable;

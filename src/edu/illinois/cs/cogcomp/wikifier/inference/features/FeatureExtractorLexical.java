@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.inference.features;
 
-import static edu.illinois.cs.cogcomp.wikifier.models.tfidf.TFIDF.*;
+import static edu.illinois.cs.cogcomp.wikifier.models.tfidf.TFIDF.getCosineSim;
 
 import java.util.ArrayList;
 import java.util.Collections;

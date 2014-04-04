@@ -1,9 +1,12 @@
 // $codepro.audit.disable useCharAtRatherThanStartsWith
 package edu.illinois.cs.cogcomp.wikifier.inference.relation;
 
-import static edu.illinois.cs.cogcomp.edison.sentences.Queries.*;
-import static edu.illinois.cs.cogcomp.edison.sentences.TextAnnotationUtilities.*;
-import static edu.illinois.cs.cogcomp.wikifier.utils.Comparators.*;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.after;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.containedInConstituent;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.hasOverlap;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.sameStartSpanAs;
+import static edu.illinois.cs.cogcomp.edison.sentences.TextAnnotationUtilities.constituentStartComparator;
+import static edu.illinois.cs.cogcomp.wikifier.utils.Comparators.longerConstituentFirst;
 
 import java.util.Arrays;
 import java.util.Comparator;

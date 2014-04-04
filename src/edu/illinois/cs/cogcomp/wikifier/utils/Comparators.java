@@ -3,12 +3,10 @@ package edu.illinois.cs.cogcomp.wikifier.utils;
 import java.util.Comparator;
 import java.util.Map;
 
-
-
 import edu.illinois.cs.cogcomp.edison.sentences.Constituent;
 import edu.illinois.cs.cogcomp.edison.sentences.TextAnnotationUtilities;
-import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
+import edu.illinois.cs.cogcomp.wikifier.models.WikiCandidate;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.Triple;
 
 

@@ -1,8 +1,10 @@
 package edu.illinois.cs.cogcomp.annotation.handler;
 
-import static edu.illinois.cs.cogcomp.edison.sentences.ViewNames.*;
-import static java.util.Arrays.*;
-import static java.util.Collections.*;
+import static edu.illinois.cs.cogcomp.edison.sentences.ViewNames.NER;
+import static edu.illinois.cs.cogcomp.edison.sentences.ViewNames.POS;
+import static edu.illinois.cs.cogcomp.edison.sentences.ViewNames.SHALLOW_PARSE;
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -13,6 +13,7 @@ import edu.illinois.cs.cogcomp.wikifier.evaluation.ProblemEvaluationResult;
 import edu.illinois.cs.cogcomp.wikifier.inference.features.FeatureExtractorCoherence;
 import edu.illinois.cs.cogcomp.wikifier.inference.features.FeatureExtractorInterface;
 import edu.illinois.cs.cogcomp.wikifier.inference.features.FeatureExtractorLexical;
+import edu.illinois.cs.cogcomp.wikifier.inference.features.FeatureExtractorProfiler;
 import edu.illinois.cs.cogcomp.wikifier.inference.features.FeatureExtractorTitleMatchAndFrequency;
 import edu.illinois.cs.cogcomp.wikifier.inference.features.SimilarityMetrics;
 import edu.illinois.cs.cogcomp.wikifier.models.LinkingProblem;
@@ -385,10 +386,16 @@ public class InferenceEngine {
 				extractors.add(new FeatureExtractorLexical(
 						"FeatureExtractorLexical",
 						inTraining, GlobalParameters.paths.models));
+			if (GlobalParameters.params.useProfilerFeatures) {
+				extractors.add(new FeatureExtractorProfiler(
+						"FeatureExtractorProfiler", inTraining,
+						GlobalParameters.paths.models));
+				}
 			if(GlobalParameters.params.useCoherenceFeatures)
 				extractors.add(new FeatureExtractorCoherence(
 						"FeatureExtractorCoherence",
 						inTraining, GlobalParameters.paths.models));
+			
 		return extractors;
 	}	
 }

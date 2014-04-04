@@ -1,6 +1,9 @@
 package edu.illinois.cs.cogcomp.wikifier.utils.io;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class StopWords {
     private Set<String> stopWords = new HashSet<String>();

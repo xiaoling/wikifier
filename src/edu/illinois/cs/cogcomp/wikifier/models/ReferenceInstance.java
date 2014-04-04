@@ -64,6 +64,7 @@ public class ReferenceInstance extends TextSpan implements Serializable{
 			ReferenceInstance ri=new ReferenceInstance();
 			line=in.readLine();//<SurfaceForm>
 			ri.surfaceForm=in.readLine().trim();
+			System.out.println("sf="+ri.surfaceForm);
 			line=in.readLine();//</SurfaceForm>
 			line=in.readLine();//<Offset>
 			ri.charStart=Integer.parseInt(in.readLine().replace(" ", "").replace("\t", ""));
@@ -77,7 +78,9 @@ public class ReferenceInstance extends TextSpan implements Serializable{
 			//	http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Dorothy_Lamour
 			//	</ChosenAnnotation>
 			//The normalization will strip the  "wikipedia.org/wiki/" part
-			ri.chosenAnnotation=normalize(in.readLine().replace(" ", "").replace("\t", ""));
+			String annoText = in.readLine().replace(" ", "").replace("\t", "");
+			ri.chosenAnnotation=normalize(annoText);
+			System.out.println("anno="+ri.chosenAnnotation+" FROM "+annoText);
 			line=in.readLine();//</ChosenAnnotation>
 			line=in.readLine();//<NumAnnotators>
 			int numAnnorations=Integer.parseInt(in.readLine().replace(" ", "").replace("\t", ""));
@@ -99,7 +102,7 @@ public class ReferenceInstance extends TextSpan implements Serializable{
 		return res;
 	}
 	
-	private static String normalize(String wikiLink) throws Exception {
+	public static String normalize(String wikiLink) throws Exception {
 	    
 		if(wikiLink.contains("wikipedia.org/wiki/"))
 			wikiLink = StringUtils.substringAfterLast(wikiLink, "wikipedia.org/wiki/");

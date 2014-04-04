@@ -1,7 +1,13 @@
 package edu.illinois.cs.cogcomp.wikifier.models.extractors;
 
-import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.*;
-import static org.junit.Assert.*;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.atMost2Connectives;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.capitalizedWord;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.connective;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.joinedPattern;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.superEntityPattern;
+import static edu.illinois.cs.cogcomp.wikifier.models.extractors.MentionExtractor.topLevelEntity;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Set;

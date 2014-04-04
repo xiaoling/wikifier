@@ -1,6 +1,7 @@
 package edu.illinois.cs.cogcomp.wikifier.utils.io;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 
 /**

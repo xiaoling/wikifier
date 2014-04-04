@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.models;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import javatools.parsers.NounGroup;
 
 import org.apache.commons.lang3.StringUtils;

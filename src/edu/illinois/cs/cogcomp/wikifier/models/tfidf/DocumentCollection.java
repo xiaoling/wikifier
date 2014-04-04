@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.SortedObjects.SortedWords;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.OccurrenceCounter;
+import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.SortedObjects.SortedWords;
 import edu.illinois.cs.cogcomp.wikifier.utils.io.InFile;
 import edu.illinois.cs.cogcomp.wikifier.utils.io.StopWords;
 

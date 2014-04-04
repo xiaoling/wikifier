@@ -1,20 +1,12 @@
 package edu.illinois.cs.cogcomp.lbj.coref.constraints;
 
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import edu.illinois.cs.cogcomp.core.datastructures.IntPair;
-import edu.illinois.cs.cogcomp.lbj.coref.features.GenderFeatures;
-import edu.illinois.cs.cogcomp.lbj.coref.features.MentionProperties;
-import edu.illinois.cs.cogcomp.lbj.coref.features.PronounResolutionFeatures;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.Mention;
 import edu.illinois.cs.cogcomp.lbj.coref.ir.docs.Doc;
 import edu.illinois.cs.cogcomp.lbj.coref.util.aux.myAux;

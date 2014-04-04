@@ -1,5 +1,4 @@
 package edu.illinois.cs.cogcomp.wikifier.models;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -8,7 +7,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,14 +20,10 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-
 import edu.illinois.cs.cogcomp.wikifier.utils.XmlModel;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.ArraySet;
 import edu.illinois.cs.cogcomp.wikifier.utils.io.CSVAdapter.CSVSetAdapter;
 import edu.illinois.cs.cogcomp.wikifier.utils.io.CompressionUtils;
-import edu.illinois.cs.cogcomp.wikifier.utils.io.Serializer;
 
 @XmlRootElement(name = "wikiArticleInfo")
 @XmlAccessorType(XmlAccessType.FIELD)

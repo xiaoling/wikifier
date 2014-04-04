@@ -3,7 +3,6 @@ package edu.illinois.cs.cogcomp.annotation.handler;
 import edu.illinois.cs.cogcomp.edison.data.curator.CuratorClient;
 import edu.illinois.cs.cogcomp.edison.sentences.TextAnnotation;
 import edu.illinois.cs.cogcomp.edison.sentences.TokenizerUtilities.SentenceViewGenerators;
-import edu.illinois.cs.cogcomp.wikifier.common.GlobalParameters;
 
 public class WikifierHandlerTest {
     

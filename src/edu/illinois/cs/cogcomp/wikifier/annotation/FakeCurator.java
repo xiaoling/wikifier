@@ -207,6 +207,7 @@ class FakeCurator {
 		ParametersForLbjCode.currentParameters.forceNewSentenceOnLineBreaks = newline2newsent;
 		if (input.trim().equals("")) 
 			return;
+		System.out.println("fakecurator: performChunker :"+input);
 		List<LinkedVector> NEWordSentences = PlainTextReader.parseText(input);
 		for(int i=0;i<NEWordSentences.size();i++) {
 			LinkedVector chunkerSentence = new LinkedVector();

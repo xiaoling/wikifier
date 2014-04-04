@@ -5,9 +5,9 @@ import java.util.Map;
 
 import edu.illinois.cs.cogcomp.edison.sentences.Constituent;
 import edu.illinois.cs.cogcomp.wikifier.models.LinkingProblem;
-import edu.illinois.cs.cogcomp.wikifier.models.TextSpan;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention;
 import edu.illinois.cs.cogcomp.wikifier.models.Mention.SurfaceType;
+import edu.illinois.cs.cogcomp.wikifier.models.TextSpan;
 
 abstract class AbstractMentionGenerator {
 

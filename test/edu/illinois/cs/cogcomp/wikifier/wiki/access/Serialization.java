@@ -1,15 +1,8 @@
 package edu.illinois.cs.cogcomp.wikifier.wiki.access;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 
 import org.junit.Test;
-
-import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.BasicTitleDataInfoProto;
-import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.LexicalTitleDataInfoProto;
-import edu.illinois.cs.cogcomp.wikifier.models.WikipediaProtobuffers.SemanticTitleDataInfoProto;
-import edu.illinois.cs.cogcomp.wikifier.wiki.access.WikiAccess.WikiData;
 
 public class Serialization {
 

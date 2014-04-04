@@ -220,8 +220,8 @@ public class GlobalParameters {
      * @throws Exception
      */
 	public static void main(String[] args) throws Exception{
-//		loadConfig("configs/DEFAULT.xml");
-	    dumpConfigXmls("configs");
+		loadConfig("configs/Ablation/PROFILER.xml");
+//	    dumpConfigXmls("configs");
 	}
 
 }

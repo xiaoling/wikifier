@@ -1,5 +1,9 @@
 package edu.illinois.cs.cogcomp.wikifier.inference.relation;
 
+import static edu.illinois.cs.cogcomp.wikifier.utils.WikiTitleUtils.getCanonicalTitle;
+import static edu.illinois.cs.cogcomp.wikifier.utils.WikiTitleUtils.getHead;
+import static edu.illinois.cs.cogcomp.wikifier.utils.WikiTitleUtils.getSecondaryEntity;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +11,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-
 
 import com.google.common.collect.Lists;
 
@@ -18,7 +21,6 @@ import edu.illinois.cs.cogcomp.wikifier.utils.Comparators;
 import edu.illinois.cs.cogcomp.wikifier.utils.datastructure.Triple;
 import edu.illinois.cs.cogcomp.wikifier.utils.lucene.CustomEditDistance;
 import edu.illinois.cs.cogcomp.wikifier.wiki.indexing.wikiRelations.WikiRelationSearcher;
-import static edu.illinois.cs.cogcomp.wikifier.utils.WikiTitleUtils.*;
 
 public class RelationalAnalysis {
 

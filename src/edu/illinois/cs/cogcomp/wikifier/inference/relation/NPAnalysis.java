@@ -1,6 +1,6 @@
 package edu.illinois.cs.cogcomp.wikifier.inference.relation;
 
-import static edu.illinois.cs.cogcomp.edison.sentences.Queries.*;
+import static edu.illinois.cs.cogcomp.edison.sentences.Queries.containedInConstituent;
 
 import java.util.Map;
 

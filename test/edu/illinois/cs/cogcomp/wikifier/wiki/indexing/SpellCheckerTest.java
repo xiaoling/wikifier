@@ -1,6 +1,11 @@
 package edu.illinois.cs.cogcomp.wikifier.wiki.indexing;
 
-import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.*;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.ShingleField;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.URLField;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.config;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.shingleString;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.spellAnalyzer;
+import static edu.illinois.cs.cogcomp.wikifier.wiki.indexing.WikiTitleSpellChecker.spellDoc;
 
 import java.io.IOException;
 
