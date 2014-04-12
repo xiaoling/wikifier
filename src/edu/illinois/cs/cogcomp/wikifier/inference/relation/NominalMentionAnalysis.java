@@ -202,7 +202,11 @@ public class NominalMentionAnalysis {
                     || GlobalParameters.wordnet.getDefaultHypenymsToTheRoot(s, POS.NOUN).contains("person")
                     || GlobalParameters.wnsim.wnsim("person", s)>0 ;
         } catch (JWNLException e) {
+        	logger.error("s="+s);
             e.printStackTrace();
+        } catch(Exception e) {
+        	logger.error("s="+s);
+        	e.printStackTrace();
         }
         return false;
     }

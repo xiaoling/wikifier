@@ -367,7 +367,7 @@ public class ReferenceAssistant {
 		 .get(CoreAnnotations.TokensAnnotation.class);
 		 StringBuilder sb = new StringBuilder();
 		 for (CoreLabel token : tokens) {
-		 sb.append(token.get(CoreAnnotations.TextAnnotation.class) + " ");
+		 sb.append(token.get(CoreAnnotations.OriginalTextAnnotation.class) + " ");
 		 }
 		 tokenizedSentences.add(sb.toString().trim());
 		 }

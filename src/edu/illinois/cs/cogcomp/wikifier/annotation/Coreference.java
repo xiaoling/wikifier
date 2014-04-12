@@ -49,7 +49,8 @@ public class Coreference {
         MentionDecoder mdDec = new ExtendHeadsDecoder(new MDExtendHeads(), new BIODecoder(new MentionDetectorMyBIOHead()));
         MTypePredictor mTyper = new MTypePredictor();
 
-        loader = new DocFromTextLoader(mdDec,mTyper);
+        loader = new DocFromTextLoader(mdDec,mTyper, false);
+        //loader = new DocFromTextLoader(mdDec,mTyper);
         decoder = useGurobiDecoder ? 
                 new ILPDecoderBestLink(corefClassifier) : 
                 new BestLinkDecoder(corefClassifier);
@@ -58,8 +59,12 @@ public class Coreference {
     public static View getMentionView(TextAnnotation ta){
         if(ta.hasView(ViewNames.COREF) && isMentionView(ta.getView(ViewNames.COREF)))
             return ta.getView(ViewNames.COREF);
-        
-        View annotation = getMentionView(ta.getText());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ta.getNumberOfSentences(); i++) {
+        	sb.append(ta.getSentence(i)+"\n");
+        }
+        View annotation = getMentionView(sb.toString().trim());
+//        View annotation = getMentionView(ta.getText());
         synchronized(ta){
             ta.addView(Constants.PRED_MENTION_VIEW,annotation);
         }

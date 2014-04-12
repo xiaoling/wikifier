@@ -129,12 +129,21 @@ public class FeatureExtractorLexical extends FeatureExtractorInterface{
 	        TF_IDF_Doc[] problemContexts,
 	        TF_IDF_Doc textInfo,
 	        TF_IDF_Doc contextInfo){
-        f.addFeature("Text-Text-TFIDF", getCosineSim(textInfo, problemText));
-        f.addFeature("Context-Text-TFIDF", getCosineSim(contextInfo, problemText));
-        
-        int j = -1; for(TF_IDF_Doc local:problemContexts){ j++;
-            f.addFeature("Text-Context-TFIDFwin"+j, getCosineSim(textInfo, local));
+		double score = getCosineSim(textInfo, problemText);
+        f.addFeature("Text-Text-TFIDF", score);
+        System.out.println("Text-Text-TFIDF="+score);
+        score = getCosineSim(contextInfo, problemText);
+        f.addFeature("Context-Text-TFIDF", score);
+        System.out.println("Context-Text-TFIDF="+score);
+        int j = -1; 
+        for(TF_IDF_Doc local:problemContexts){ 
+        	j++;
+        	score = getCosineSim(textInfo, local);
+            f.addFeature("Text-Context-TFIDFwin"+j, score);
+            System.out.println("Text-Context-TFIDFwin"+j+"="+score);
+            score = getCosineSim(contextInfo, local);
             f.addFeature("Context-Context-TFIDFwin"+j, getCosineSim(contextInfo, local));
+            System.out.println("Context-Context-TFIDFwin"+j+"="+score);
         }
 	}
 }
